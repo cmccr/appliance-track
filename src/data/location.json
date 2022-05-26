@@ -1,0 +1,32 @@
+[
+  {
+    "id": 0,
+    "imgurl": "../images/roy.png",
+    "name": "Roy Prop",
+    "street1": "4608 S 2675 W",
+    "street2": "",
+    "city": "Roy",
+    "state": "UT",
+    "zipcode": "84067"
+  },
+  {
+    "id": 1,
+    "imgurl": "../images/ogden.png",
+    "name": "Ogden Prop",
+    "street1": "1408 Binford St.",
+    "street2": "",
+    "city": "Ogden",
+    "state": "UT",
+    "zipcode": "84041"
+  },
+  {
+    "id": 2,
+    "imgurl": "../images/nsl.png",
+    "name": "NSL Prop",
+    "street1": "1047 Boston Ct.",
+    "street2": "",
+    "city": "North Salt Lake",
+    "state": "UT",
+    "zipcode": "84054"
+  }
+]
