@@ -1,14 +1,17 @@
 [
-    {
-        "id": 0,
-        "name": "appliance1"
-    },
-    {
-        "id": 1,
-        "name": "appliance2"
-    },
-    {
-        "id": 2,
-        "name": "appliance3"
-    }
+  {
+    "id": 0,
+    "location_id": 0,
+    "name": "appliance1"
+  },
+  {
+    "id": 1,
+    "location_id": 0,
+    "name": "appliance2"
+  },
+  {
+    "id": 2,
+    "location_id": 1,
+    "name": "appliance3"
+  }
 ]
