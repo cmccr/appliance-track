@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
 function Appliancecard(props) {
   return (
     <div>
-            <h2>{props.appliance.name}</h2>
-        <p>it worked</p>
+      <h2>{props.appliance.name}</h2>
+      <p>it worked</p>
     </div>
-  )
+  );
 }
 
-export default Appliancecard
+export default Appliancecard;

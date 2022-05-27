@@ -4,11 +4,19 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import store from "../../store/app";
 
 function Locationcard(props) {
+  function setPropertyId() {
+    store.dispatch({
+      type: "setLocation",
+      location_id: props.location.id,
+    });
+  }
+
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
+      <CardActionArea onClick={setPropertyId}>
         <CardMedia
           component="img"
           height="140"
