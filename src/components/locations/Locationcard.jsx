@@ -3,11 +3,12 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+// import { CardActions } from "@mui/material/CardActions";
 import { CardActionArea } from "@mui/material";
 import store from "../../store/app";
 
 function Locationcard(props) {
-  function setPropertyId() {
+  function setPropertyId(setPropertyId) {
     store.dispatch({
       type: "setLocation",
       location_id: props.location.id,

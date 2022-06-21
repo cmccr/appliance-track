@@ -1,12 +1,28 @@
-import React from "react";
-import Appliancecard from "./Appliancecard";
-import store from "../../store/app";
-import CustomData from "../../data/appliances.json";
+import React, { useState } from "react";
+import Typography from "@mui/material/Typography";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-export default function Appliancelist() {
-  return CustomData.filter((f) => {
-    return f.location_id === store.getState().location_id;
-  }).map((e) => {
-    return <Appliancecard key={e.id} appliance={e} />;
-  });
+export default function SimpleAccordion() {
+  return (
+    <div>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Samsung Refigerator</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+    </div>
+  );
 }
