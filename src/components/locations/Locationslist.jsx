@@ -32,8 +32,8 @@ const getLocationQuery = gql`
   }
 `;
 
-function Locationslist() {
-  const [currentprop, setCurrentProp] = useState(0);
+function Locationslist(props) {
+  const { handleClick } = props;
   const { data } = useQuery(getLocationQuery);
   return (
     <div className="location-appliance">
@@ -43,13 +43,13 @@ function Locationslist() {
             <Locationcard
               key={e.id}
               location={e}
-              setCurrentProp={setCurrentProp}
+              setCurrentProp={handleClick}
             />
           );
         })}
       </div>
-      <Grid item md={12}>
-        <AddBoxIcon onClick={}>Two Tone</AddBoxIcon>
+      <Grid item md={8}>
+        <AddBoxIcon>Two Tone</AddBoxIcon>
       </Grid>
     </div>
   );

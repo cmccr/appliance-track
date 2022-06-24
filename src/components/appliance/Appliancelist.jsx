@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useEffect } from "react";
 
-function SimpleAccordion() {
+function SimpleAccordion(props) {
+  const { currentProp } = props;
+  useEffect(() => {}, [currentProp]);
+
   return (
     <div>
       <Accordion>
@@ -14,12 +18,19 @@ function SimpleAccordion() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Samsung Refigerator</Typography>
+          <Typography>Refigerator</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            {currentProp.appliances.map((appliance) => {
+              return (
+                <div>
+                  {currentProp.address1}
+                  {currentProp.id}
+                  {appliance.manufacturer}
+                </div>
+              );
+            })}
           </Typography>
         </AccordionDetails>
       </Accordion>

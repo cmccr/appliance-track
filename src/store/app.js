@@ -13,10 +13,6 @@ function selectedLocation(state = { location_id: 0 }, action) {
   }
 }
 
-// function setLocations = (state = {[ ]}, ) {
-
-// }
-
 store.subscribe(() => console.log(store.getState()));
 
 export default store;
