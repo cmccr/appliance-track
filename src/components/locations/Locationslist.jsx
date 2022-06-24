@@ -1,7 +1,8 @@
 import Locationcard from "./Locationcard";
-import CustomData from "../../data/location.json";
 import React, { useState } from "react";
-import Appliancelist from "../appliance/Appliancelist";
+import { gql, useQuery } from "@apollo/client";
+import Grid from "@mui/material/Grid";
+import AddBoxIcon from "@mui/icons-material/AddBox";
 
 // export default function Locationslist() {
 //   return CustomData.map((e) => {
@@ -9,13 +10,35 @@ import Appliancelist from "../appliance/Appliancelist";
 //   });
 // }
 
-export default function Locationlist() {
-  const [currentprop, setCurrentProp] = useState(0);
+const getLocationQuery = gql`
+  query MyQuery {
+    prod_location {
+      address1
+      address2
+      city
+      country
+      id
+      label
+      created_at
+      imgURL
+      appliances {
+        label
+        id
+        description
+        manufacturer
+        serial_number
+      }
+    }
+  }
+`;
 
+function Locationslist() {
+  const [currentprop, setCurrentProp] = useState(0);
+  const { data } = useQuery(getLocationQuery);
   return (
     <div className="location-appliance">
       <div className="property-map">
-        {CustomData.map((e) => {
+        {data?.prod_location.map((e) => {
           return (
             <Locationcard
               key={e.id}
@@ -25,8 +48,11 @@ export default function Locationlist() {
           );
         })}
       </div>
-
-      <Appliancelist currentprop={currentprop} />
+      <Grid item md={12}>
+        <AddBoxIcon onClick={}>Two Tone</AddBoxIcon>
+      </Grid>
     </div>
   );
 }
+
+export default Locationslist;

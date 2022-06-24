@@ -5,14 +5,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 // import { CardActions } from "@mui/material/CardActions";
 import { CardActionArea } from "@mui/material";
-import store from "../../store/app";
+// import store from "../../store/app";
 
 function Locationcard(props) {
   function setPropertyId(setPropertyId) {
-    store.dispatch({
-      type: "setLocation",
-      location_id: props.location.id,
-    });
+    console.log("clicked:", props.location);
   }
 
   return (
@@ -21,15 +18,15 @@ function Locationcard(props) {
         <CardMedia
           component="img"
           height="140"
-          image={props.location.imgurl}
+          image={props.location.imgURL}
           alt="property image"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {props.location.name}
+            {props.location.label}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {props.location.street1}
+            {props.location.address1}
           </Typography>
         </CardContent>
       </CardActionArea>

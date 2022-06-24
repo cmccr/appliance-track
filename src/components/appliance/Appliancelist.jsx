@@ -5,7 +5,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-export default function SimpleAccordion() {
+function SimpleAccordion() {
   return (
     <div>
       <Accordion>
@@ -26,3 +26,5 @@ export default function SimpleAccordion() {
     </div>
   );
 }
+
+export default SimpleAccordion;
