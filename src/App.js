@@ -5,6 +5,9 @@ import { Grid } from "@mui/material";
 import "./App.css";
 import React, { useState } from "react";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { gql } from "@apollo/client";
+import LoginButton from "./components/login/Login";
+import LogoutButton from "./components/logout/Logout";
 
 const client = new ApolloClient({
   uri: "https://actual-gecko-51.hasura.app/v1/graphql",
@@ -13,21 +16,21 @@ const client = new ApolloClient({
 
 let selectedProp = null;
 
-// const appliance_info = gql`
-//   query MyQuery {
-//     prod_location {
-//       appliances {
-//         label
-//         id
-//         description
-//         manufacturer
-//         serial_number
-//       }
-//       id
-//       label
-//     }
-//   }
-// `;
+const appliance_info = gql`
+  query MyQuery {
+    prod_location {
+      appliances {
+        label
+        id
+        description
+        manufacturer
+        serial_number
+      }
+      id
+      label
+    }
+  }
+`;
 
 const defaultData = {
   address1: "4608 S 2675 W",
@@ -45,21 +48,21 @@ const defaultData = {
       id: 2,
       description: null,
       manufacturer: "Samsung",
-      serial_number: null,
+      serial_number: "3yEeX7bVa3ZHxrt",
     },
     {
       label: "Washer",
       id: 3,
       description: null,
       manufacturer: "LG",
-      serial_number: null,
+      serial_number: "faBFvjKMGhgFwpX",
     },
     {
       label: "Dryer",
       id: 4,
       description: null,
       manufacturer: "LG",
-      serial_number: null,
+      serial_number: "sGxEcwW8b6aGfjK",
     },
   ],
 };
@@ -74,6 +77,8 @@ function App() {
     <ApolloProvider client={client}>
       <div className="App">
         <div className="navbar">
+          <LoginButton />
+          <LogoutButton />
           <Navbar />
         </div>
         <Grid container spacing={2}>
