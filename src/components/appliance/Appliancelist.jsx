@@ -1,15 +1,24 @@
-// import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useEffect } from "react";
-import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import AddNewAppliance from "../addNewAppliance/AddNewAppliance";
 
 function SimpleAccordion(props) {
   const { currentProp } = props;
+  const [newAppliance, setNewAppliance] = useState({});
   useEffect(() => {}, [currentProp]);
+
+  const handleFormUpdate = (event) => {
+    const applianceData = {
+      ...newAppliance,
+      [event.target.id]: event.target.value,
+    };
+    setNewAppliance(applianceData);
+  };
 
   return (
     <div>
@@ -39,7 +48,36 @@ function SimpleAccordion(props) {
             </Accordion>
           );
         })}
-        <Button variant="contained">Add Appliance</Button>
+        <div>
+          <Grid item md={4}>
+            <input
+              type="text"
+              id="label"
+              placeholder="label"
+              onChange={handleFormUpdate}
+            />
+            <input
+              type="text"
+              id="manufacturer"
+              placeholder="manufacturer"
+              onChange={handleFormUpdate}
+            />
+            <input
+              type="text"
+              id="serial_number"
+              placeholder="serial_number"
+              onChange={handleFormUpdate}
+            />
+            <AddNewAppliance
+              location_id={currentProp.id}
+              label={newAppliance.label}
+              description={newAppliance.description}
+              manufacturer={newAppliance.manufacturer}
+              serial_number={newAppliance.serial_number}
+              maintenence_plans={newAppliance.maintenence_plans}
+            />
+          </Grid>
+        </div>
       </div>
     </div>
   );

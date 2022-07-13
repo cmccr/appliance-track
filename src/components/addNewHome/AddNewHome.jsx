@@ -4,26 +4,31 @@ import Button from "@mui/material/Button";
 
 const AddNewHomeMutation = gql`
   mutation AddNewHome(
-    $address1: String!
-    $city: String!
-    $imgUrl: String!
-    $id: String!
+    $address1: String
+    $address2: String
+    $city: String
+    $imgURL: String
+    $state: String
+    $label: String!
+    $zip: String
   ) {
     insert_prod_location(
       objects: {
         address1: $address1
         address2: ""
         city: $city
-        imgURL: $imgUrl
+        imgURL: $imgURL
         label: $label
         state: $state
         zip: $zip
         account_id: 1
-        id: $id
       }
     ) {
       returning {
+        imgURL
+        label
         address1
+        id
         account_id
       }
     }
@@ -31,7 +36,7 @@ const AddNewHomeMutation = gql`
 `;
 
 function AddNewHome(props) {
-  const [mutateFunction, { data, error }] = useMutation(AddNewHomeMutation, {
+  const [mutateFunction] = useMutation(AddNewHomeMutation, {
     variables: {
       address1: props.address1,
       address2: props.address2,
@@ -40,11 +45,10 @@ function AddNewHome(props) {
       label: props.label,
       state: props.state,
       zip: props.zip,
-      id: props.id,
     },
   });
   return (
-    <div className="">
+    <div className="new-property">
       <Button variant="contained" onClick={mutateFunction}>
         Add Property
       </Button>

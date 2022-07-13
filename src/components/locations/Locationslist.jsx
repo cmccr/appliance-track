@@ -2,7 +2,6 @@ import Locationcard from "./Locationcard";
 import React, { useState } from "react";
 import { gql, useQuery } from "@apollo/client";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
 import AddNewHome from "../addNewHome/AddNewHome";
 
 const getLocationQuery = gql`
@@ -29,7 +28,7 @@ const getLocationQuery = gql`
 
 function Locationslist(props) {
   const { handleClick } = props;
-  const { data } = useQuery(getLocationQuery);
+  let { data } = useQuery(getLocationQuery);
   const [newProperty, setNewProperty] = useState({});
 
   const handleFormUpdate = (event) => {
@@ -52,12 +51,6 @@ function Locationslist(props) {
       </div>
       <Grid item md={8}>
         <div>
-          <input
-            type="text"
-            id="id"
-            placeholder="id"
-            onChange={handleFormUpdate}
-          />
           <input
             type="text"
             id="address1"
